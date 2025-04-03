@@ -1,5 +1,6 @@
 package com.example.carshowcaseapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -76,7 +77,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void setButtons() {
         newBtn.setOnClickListener(v -> {
-
+            // startActivity(new Intent(this, ));
+        });
+        bookmarkIcon.setOnClickListener(v -> {
+            // startActivity(new Intent(this, ));
         });
     }
 
