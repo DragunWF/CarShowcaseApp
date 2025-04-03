@@ -18,7 +18,7 @@ public class DatabaseHelper {
     private static ModelBank<Vehicle> vehicleBank;
     private static ModelBank<Bookmark> bookmarkBank;
 
-    public void initialize(Context context) {
+    public static void initialize(Context context) {
         sharedPref = context.getSharedPreferences(FILE_KEY, Context.MODE_PRIVATE);
         editor = sharedPref.edit();
         adminBank = new ModelBank<>(sharedPref, editor, "admins", Admin.class);
