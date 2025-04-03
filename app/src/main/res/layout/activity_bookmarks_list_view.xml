@@ -20,7 +20,7 @@
             android:layout_marginBottom="20dp">
 
             <ImageView
-                android:id="@+id/imageView2"
+                android:id="@+id/backBtn"
                 android:layout_width="38dp"
                 android:layout_height="38dp"
                 app:srcCompat="@drawable/baseline_arrow_back_24" />
@@ -38,6 +38,7 @@
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/bookmarkRecycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
