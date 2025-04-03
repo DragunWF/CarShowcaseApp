@@ -13,185 +13,182 @@
         android:orientation="vertical"
         android:padding="30dp">
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="30dp">
+            android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/backBtn"
-                android:layout_width="38dp"
-                android:layout_height="38dp"
-                app:srcCompat="@drawable/baseline_arrow_back_24" />
-
-            <TextView
-                android:id="@+id/headerText"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="30dp"
-                android:textColor="@color/Primary"
-                android:textStyle="bold"
-                android:textAlignment="center"
-                android:layout_marginStart="70dp"
-                android:text="Add New Car" />
-        </LinearLayout>
+                android:orientation="vertical" >
 
-        <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center"
-            android:layout_marginBottom="10dp"
-            app:srcCompat="@drawable/baseline_add_a_photo_24" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="30dp"
+                    android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="30dp">
+                    <ImageView
+                        android:id="@+id/backBtn"
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        app:srcCompat="@drawable/baseline_arrow_back_24" />
 
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="img src:"
-                android:textStyle="bold"
-                android:textSize="18dp"
-                android:layout_marginEnd="10dp"/>
+                    <TextView
+                        android:id="@+id/headerText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="70dp"
+                        android:text="Add New Car"
+                        android:textAlignment="center"
+                        android:textColor="@color/Primary"
+                        android:textSize="30dp"
+                        android:textStyle="bold" />
+                </LinearLayout>
 
-            <Spinner
-                android:id="@+id/imageSpinner"
-                android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:layout_weight="1" />
-        </LinearLayout>
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="10dp"
+                    app:srcCompat="@drawable/baseline_add_a_photo_24" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:counterMaxLength="32"
-            app:counterEnabled="true"
-            app:counterTextColor="@color/Primary"
-            app:boxStrokeWidth="2dp"
-            app:boxStrokeWidthFocused="3dp"
-            app:hintEnabled="true"
-            app:boxCornerRadiusBottomStart="10dp"
-            app:boxCornerRadiusBottomEnd="10dp"
-            app:boxCornerRadiusTopStart="10dp"
-            app:boxCornerRadiusTopEnd="10dp"
-            app:boxStrokeColor="@color/Primary"
-            app:hintTextColor="@color/Primary"
-            android:layout_marginBottom="10dp"
-            >
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/brandText"
-                android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:hint="Brand:"
-                android:maxLength="32"
-                android:textSize="14sp"
-                android:textColorHint="#8189DD"
-                app:boxStrokeColor="#8189DD"
-                />
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:counterMaxLength="32"
-            app:counterEnabled="true"
-            app:counterTextColor="@color/Primary"
-            app:boxStrokeWidth="2dp"
-            app:boxStrokeWidthFocused="3dp"
-            app:hintEnabled="true"
-            app:boxCornerRadiusBottomStart="10dp"
-            app:boxCornerRadiusBottomEnd="10dp"
-            app:boxCornerRadiusTopStart="10dp"
-            app:boxCornerRadiusTopEnd="10dp"
-            app:boxStrokeColor="@color/Primary"
-            app:hintTextColor="@color/Primary"
-            android:layout_marginBottom="10dp"
-            >
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/modelText"
-                android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:hint="Model:"
-                android:maxLength="32"
-                android:textSize="14sp"
-                android:textColorHint="#8189DD"
-                app:boxStrokeColor="#8189DD"
-                />
-        </com.google.android.material.textfield.TextInputLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="horizontal">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:counterMaxLength="32"
-            app:counterEnabled="true"
-            app:counterTextColor="@color/Primary"
-            app:boxStrokeWidth="2dp"
-            app:boxStrokeWidthFocused="3dp"
-            app:hintEnabled="true"
-            app:boxCornerRadiusBottomStart="10dp"
-            app:boxCornerRadiusBottomEnd="10dp"
-            app:boxCornerRadiusTopStart="10dp"
-            app:boxCornerRadiusTopEnd="10dp"
-            app:boxStrokeColor="@color/Primary"
-            app:hintTextColor="@color/Primary"
-            android:layout_marginBottom="10dp"
-            >
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/priceText"
-                android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:hint="Price:"
-                android:inputType="numberDecimal"
-                android:maxLength="32"
-                android:textSize="14sp"
-                android:textColorHint="#8189DD"
-                app:boxStrokeColor="#8189DD"
-                />
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:text="Img src:"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
 
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:counterMaxLength="32"
-            app:counterEnabled="true"
-            app:counterTextColor="@color/Primary"
-            app:boxStrokeWidth="2dp"
-            app:boxStrokeWidthFocused="3dp"
-            app:hintEnabled="true"
-            app:boxCornerRadiusBottomStart="10dp"
-            app:boxCornerRadiusBottomEnd="10dp"
-            app:boxCornerRadiusTopStart="10dp"
-            app:boxCornerRadiusTopEnd="10dp"
-            app:boxStrokeColor="@color/Primary"
-            app:hintTextColor="@color/Primary"
-            android:layout_marginBottom="10dp"
-            >
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/featuresText"
-                android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:hint="Features:"
-                android:maxLength="32"
-                android:textSize="14sp"
-                android:textColorHint="#8189DD"
-                app:boxStrokeColor="#8189DD"
-                />
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/confirmBtn"
-            android:layout_width="match_parent"
-            android:layout_height="52dp"
-            android:text="Confirm"
-            app:backgroundTint="@color/Bg"
-            android:textSize="18dp"
-            android:textStyle="bold"
-            app:cornerRadius="10dp"
-            />
+                    <Spinner
+                        android:id="@+id/imageSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:layout_weight="1" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="15dp">
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="18dp"
+                        android:text="Type: "
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <Spinner
+
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                         />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="15dp">
+
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:text="Brand: "
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <Spinner
+
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp" />
+                </LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusTopStart="10dp"
+                    app:boxStrokeColor="@color/Primary"
+                    app:boxStrokeWidth="2dp"
+                    app:boxStrokeWidthFocused="3dp"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="32"
+                    app:counterTextColor="@color/Primary"
+                    app:hintEnabled="true"
+                    app:hintTextColor="@color/Primary">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/priceText"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:hint="Price:"
+                        android:inputType="numberDecimal"
+                        android:maxLength="32"
+                        android:textColorHint="#8189DD"
+                        android:textSize="14sp"
+                        app:boxStrokeColor="#8189DD" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusTopStart="10dp"
+                    app:boxStrokeColor="@color/Primary"
+                    app:boxStrokeWidth="2dp"
+                    app:boxStrokeWidthFocused="3dp"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="32"
+                    app:counterTextColor="@color/Primary"
+                    app:hintEnabled="true"
+                    app:hintTextColor="@color/Primary">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/featuresText"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:hint="Features:"
+                        android:maxLength="32"
+                        android:textColorHint="#8189DD"
+                        android:textSize="14sp"
+                        app:boxStrokeColor="#8189DD" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/confirmBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:text="Confirm"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    app:backgroundTint="@color/Bg"
+                    app:cornerRadius="10dp" />
+            </LinearLayout>
+        </ScrollView>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

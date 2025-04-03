@@ -23,7 +23,9 @@
             <SearchView
                 android:id="@+id/searchBar"
                 android:layout_width="200dp"
-                android:layout_height="48dp" />
+                android:layout_height="48dp"
+                android:background="@drawable/search_bar_bg"
+                app:iconTint="@color/Primary"/>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/newBtn"
@@ -38,7 +40,8 @@
                 app:iconPadding="10dp"
                 app:iconTint="@color/Primary"
                 app:strokeColor="@color/Primary"
-                app:strokeWidth="3dp" />
+                app:strokeWidth="3dp"
+                app:cornerRadius="17dp"/>
 
         </LinearLayout>
 
