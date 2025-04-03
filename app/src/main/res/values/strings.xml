@@ -1,11 +1,13 @@
 <resources>
     <string name="app_name">CarShowcaseApp</string>
     <string-array name="categories_array">
+        <item>Any</item>
         <item>Luxury</item>
         <item>Family</item>
         <item>Performance</item>
     </string-array>
     <string-array name="images_array">
+        <item>Any</item>
         <item>Coupe</item>
         <item>Ferrari</item>
         <item>Minivan</item>
@@ -13,5 +15,12 @@
         <item>Sedan 2</item>
         <item>SUV</item>
         <item>SUV 2</item>
+    </string-array>
+    <string-array name="brands_array">
+        <item>Any</item>
+        <item>BMW</item>
+        <item>Toyota</item>
+        <item>Ferrari</item>
+        <item>Lincoln</item>
     </string-array>
 </resources>
