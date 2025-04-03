@@ -22,4 +22,23 @@
         <item>Toyota</item>
         <item>Ferrari</item>
     </string-array>
+    <string-array name="categories_array_form">
+        <item>Luxury</item>
+        <item>Family</item>
+        <item>Performance</item>
+    </string-array>
+    <string-array name="images_array_form">
+        <item>Coupe</item>
+        <item>Ferrari</item>
+        <item>Minivan</item>
+        <item>Sedan</item>
+        <item>Sedan 2</item>
+        <item>SUV</item>
+        <item>SUV 2</item>
+    </string-array>
+    <string-array name="brands_array_form">
+        <item>BMW</item>
+        <item>Toyota</item>
+        <item>Ferrari</item>
+    </string-array>
 </resources>

@@ -1,5 +1,6 @@
 package com.example.carshowcaseapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -21,6 +22,12 @@ public class ViewItem extends AppCompatActivity {
     private ImageView backBtn, editBtn, vehicleImage;
 
     private int currentVehicleId;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setDetails();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +68,10 @@ public class ViewItem extends AppCompatActivity {
             finish();
         });
         editBtn.setOnClickListener(v -> {
-
+            Intent intent = new Intent(this, AddEditItem.class);
+            intent.putExtra(AddEditItem.FORM_TYPE, AddEditItem.EDIT);
+            intent.putExtra(VEHICLE_ID, currentVehicleId);
+            startActivity(intent);
         });
     }
 

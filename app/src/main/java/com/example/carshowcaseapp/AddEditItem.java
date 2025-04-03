@@ -18,6 +18,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.carshowcaseapp.data.Vehicle;
 import com.example.carshowcaseapp.helpers.DatabaseHelper;
 import com.example.carshowcaseapp.helpers.Utils;
+import com.example.carshowcaseapp.services.VehicleService;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class AddEditItem extends AppCompatActivity {
@@ -27,15 +28,17 @@ public class AddEditItem extends AppCompatActivity {
 
     private View view;
 
-    private TextInputEditText brandText, modelText, priceText, featuresText;
+    private TextInputEditText modelText, priceText, featuresText;
     private TextView headerText;
     private Button confirmBtn;
     private ImageView backBtn;
-    private Spinner imageSpinner;
+
+    private ArrayAdapter<CharSequence> imageAdapter, brandAdapter, categoryAdapter;
+    private Spinner imageSpinner, brandSpinner, categorySpinner;
 
     private boolean isEditForm = false;
     private int currentVehicleId;
-    private String selectedImageName;
+    private String selectedImageName, selectedBrand, selectedCategory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +53,8 @@ public class AddEditItem extends AppCompatActivity {
 
         try {
             DatabaseHelper.initialize(this);
-            isEditForm = getIntent().getStringExtra(FORM_TYPE).equals(EDIT);
+            String formType = getIntent().getStringExtra(FORM_TYPE);
+            isEditForm = formType != null && formType.equals(EDIT);
 
             bindElements();
             setButtons();
@@ -71,12 +75,13 @@ public class AddEditItem extends AppCompatActivity {
         view = findViewById(R.id.main);
         backBtn = findViewById(R.id.backBtn);
         confirmBtn = findViewById(R.id.confirmBtn);
-        brandText = findViewById(R.id.brandText);
         modelText = findViewById(R.id.modelText);
         priceText = findViewById(R.id.priceText);
         featuresText = findViewById(R.id.featuresText);
         headerText = findViewById(R.id.headerText);
         imageSpinner = findViewById(R.id.imageSpinner);
+        brandSpinner = findViewById(R.id.brandSpinner);
+        categorySpinner = findViewById(R.id.categorySpinner);
     }
 
     private void setButtons() {
@@ -84,12 +89,11 @@ public class AddEditItem extends AppCompatActivity {
             finish();
         });
         confirmBtn.setOnClickListener(v -> {
-            String brand = Utils.getText(brandText);
             String model = Utils.getText(modelText);
             String priceStr = Utils.getText(priceText);
             String features = Utils.getText(featuresText);
 
-            if (brand.isEmpty() || model.isEmpty() || priceStr.isEmpty() || features.isEmpty() || selectedImageName.isEmpty()) {
+            if (model.isEmpty() || priceStr.isEmpty() || features.isEmpty() || selectedImageName.isEmpty()) {
                 Utils.snackbar("All fields are required!", view);
                 return;
             }
@@ -97,15 +101,17 @@ public class AddEditItem extends AppCompatActivity {
             double price = Double.parseDouble(priceStr);
             if (isEditForm) {
                 Vehicle vehicle = DatabaseHelper.getVehicleBank().get(currentVehicleId);
-                vehicle.setBrand(brand);
+                vehicle.setBrand(selectedBrand);
                 vehicle.setModel(model);
                 vehicle.setPrice(price);
                 vehicle.setFeatures(features);
                 vehicle.setImageName(selectedImageName);
-                // vehicle.setImageName();
+                vehicle.setCategory(selectedCategory);
+                VehicleService.edit(vehicle);
                 Utils.longToast("Item has been edited!", this);
             } else {
-                // Vehicle vehicle = new Vehicle(model, brand, features)
+                Vehicle vehicle = new Vehicle(model, selectedBrand, features, selectedCategory, selectedImageName, price);
+                VehicleService.add(vehicle);
                 Utils.longToast("Item has been successfully added!", this);
             }
 
@@ -114,13 +120,29 @@ public class AddEditItem extends AppCompatActivity {
     }
 
     private void setSpinner() {
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+        imageAdapter = ArrayAdapter.createFromResource(
                 this,
-                R.array.images_array,
+                R.array.images_array_form,
                 android.R.layout.simple_spinner_item
         );
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        imageSpinner.setAdapter(adapter);
+        imageAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        imageSpinner.setAdapter(imageAdapter);
+
+        brandAdapter = ArrayAdapter.createFromResource(
+                this,
+                R.array.brands_array_form,
+                android.R.layout.simple_spinner_item
+        );
+        brandAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        brandSpinner.setAdapter(brandAdapter);
+
+        categoryAdapter = ArrayAdapter.createFromResource(
+                this,
+                R.array.categories_array_form,
+                android.R.layout.simple_spinner_item
+        );
+        categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        categorySpinner.setAdapter(categoryAdapter);
 
         imageSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -134,9 +156,38 @@ public class AddEditItem extends AppCompatActivity {
 
             }
         });
+        brandSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                selectedBrand = brandAdapter.getItem(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        categorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                selectedCategory = categoryAdapter.getItem(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
     private void autoFillFields() {
+        Vehicle vehicle = DatabaseHelper.getVehicleBank().get(currentVehicleId);
 
+        modelText.setText(vehicle.getModel());
+        priceText.setText(String.valueOf(vehicle.getPrice()));
+        featuresText.setText(vehicle.getFeatures());
+        // imageSpinner.setSelected(imageAdapter.getPosition(vehicle.getImageName());
+        brandSpinner.setSelection(brandAdapter.getPosition(vehicle.getBrand()));
+        categorySpinner.setSelection(categoryAdapter.getPosition(vehicle.getCategory()));
     }
 }

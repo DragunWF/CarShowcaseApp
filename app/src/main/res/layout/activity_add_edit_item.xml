@@ -92,7 +92,7 @@
                         android:textStyle="bold" />
 
                     <Spinner
-
+                        android:id="@+id/categorySpinner"
                         android:layout_width="match_parent"
                         android:layout_height="52dp"
                          />
@@ -115,7 +115,7 @@
                         android:textStyle="bold" />
 
                     <Spinner
-
+                        android:id="@+id/brandSpinner"
                         android:layout_width="match_parent"
                         android:layout_height="52dp" />
                 </LinearLayout>
@@ -138,11 +138,10 @@
                     app:hintTextColor="@color/Primary">
 
                     <com.google.android.material.textfield.TextInputEditText
-
+                        android:id="@+id/modelText"
                         android:layout_width="match_parent"
                         android:layout_height="52dp"
                         android:hint="Model:"
-                        android:inputType="numberDecimal"
                         android:maxLength="32"
                         android:textColorHint="#8189DD"
                         android:textSize="14sp"
