@@ -20,13 +20,13 @@
             android:layout_marginBottom="30dp">
 
             <ImageView
-                android:id="@+id/imageView3"
+                android:id="@+id/backBtn"
                 android:layout_width="38dp"
                 android:layout_height="38dp"
                 app:srcCompat="@drawable/baseline_arrow_back_24" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/headerText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="30dp"
@@ -61,7 +61,7 @@
                 android:layout_marginEnd="10dp"/>
 
             <Spinner
-                android:id="@+id/spinner"
+                android:id="@+id/imageSpinner"
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
                 android:layout_weight="1" />
@@ -85,7 +85,7 @@
             android:layout_marginBottom="10dp"
             >
             <com.google.android.material.textfield.TextInputEditText
-
+                android:id="@+id/brandText"
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
                 android:hint="Brand:"
@@ -113,7 +113,7 @@
             android:layout_marginBottom="10dp"
             >
             <com.google.android.material.textfield.TextInputEditText
-
+                android:id="@+id/modelText"
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
                 android:hint="Model:"
@@ -142,10 +142,11 @@
             android:layout_marginBottom="10dp"
             >
             <com.google.android.material.textfield.TextInputEditText
-
+                android:id="@+id/priceText"
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
-                android:hint="Price range:"
+                android:hint="Price:"
+                android:inputType="numberDecimal"
                 android:maxLength="32"
                 android:textSize="14sp"
                 android:textColorHint="#8189DD"
@@ -171,7 +172,7 @@
             android:layout_marginBottom="10dp"
             >
             <com.google.android.material.textfield.TextInputEditText
-
+                android:id="@+id/featuresText"
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
                 android:hint="Features:"
@@ -182,7 +183,7 @@
                 />
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.button.MaterialButton
-
+            android:id="@+id/confirmBtn"
             android:layout_width="match_parent"
             android:layout_height="52dp"
             android:text="Confirm"
@@ -191,8 +192,6 @@
             android:textStyle="bold"
             app:cornerRadius="10dp"
             />
-
-
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
