@@ -13,7 +13,6 @@ public class Vehicle extends Model {
         this.price = price;
     }
 
-
     @Override
     public String toString() {
         return "Vehicle{" +

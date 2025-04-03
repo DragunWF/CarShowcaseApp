@@ -53,9 +53,11 @@
                 android:layout_marginBottom="20dp"
                 >
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/usernameText"
                     android:layout_width="match_parent"
                     android:layout_height="52dp"
                     android:hint="Username:"
+                    android:maxLength="32"
                     android:textSize="14sp"
                     android:textColorHint="#8189DD"
                     app:boxStrokeColor="#8189DD"
@@ -80,16 +82,20 @@
                 android:layout_marginBottom="40dp"
                 >
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/passwordText"
                     android:layout_width="match_parent"
                     android:layout_height="52dp"
                     android:hint="Password:"
+                    android:maxLength="64"
                     android:textSize="14sp"
                     android:textColorHint="#8189DD"
+                    android:inputType="textPassword"
                     app:boxStrokeColor="#8189DD"
                     />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/loginBtn"
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
                 android:text="Login now"
