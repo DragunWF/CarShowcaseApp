@@ -87,6 +87,7 @@
                     android:hint="Password:"
                     android:textSize="14sp"
                     android:textColorHint="#8189DD"
+                    android:inputType="textPassword"
                     app:boxStrokeColor="#8189DD"
                     />
             </com.google.android.material.textfield.TextInputLayout>
