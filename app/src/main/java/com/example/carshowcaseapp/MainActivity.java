@@ -19,6 +19,7 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.carshowcaseapp.adapters.VehicleAdapter;
 import com.example.carshowcaseapp.data.Vehicle;
 import com.example.carshowcaseapp.helpers.DatabaseHelper;
 import com.example.carshowcaseapp.helpers.Utils;
@@ -38,7 +39,14 @@ public class MainActivity extends AppCompatActivity {
     private ImageView bookmarkIcon;
 
     private RecyclerView vehicleRecycler;
+    private VehicleAdapter vehicleAdapter;
     private RecyclerView.LayoutManager layoutManager;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        vehicleAdapter.updateDataSet();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,7 +95,8 @@ public class MainActivity extends AppCompatActivity {
     private void setRecycler() {
         vehicleRecycler.setHasFixedSize(false);
 
-        // set adapter
+        vehicleAdapter = new VehicleAdapter(DatabaseHelper.getVehicleBank().getAll(), this);
+        vehicleRecycler.setAdapter(vehicleAdapter);
 
         layoutManager = new LinearLayoutManager(this);
         vehicleRecycler.setLayoutManager(layoutManager);
@@ -116,8 +125,8 @@ public class MainActivity extends AppCompatActivity {
                 String selectedCategory = categoriesAdapter.getItem(position).toString();
                 List<Vehicle> vehicles = DatabaseHelper.getVehicleBank().getAll();
 
-                if (selectedCategory.equals("All")) {
-                    // update adapter
+                if (selectedCategory.equals("Any")) {
+                    vehicleAdapter.updateDataSet();
                     return;
                 }
 
@@ -128,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
 
-                // update adapter
+                vehicleAdapter.updateDataSet(results);
             }
 
             @Override
@@ -142,8 +151,8 @@ public class MainActivity extends AppCompatActivity {
                 String selectedBrand = brandsAdapter.getItem(position).toString();
                 List<Vehicle> vehicles = DatabaseHelper.getVehicleBank().getAll();
 
-                if (selectedBrand.equals("All")) {
-                    // update adapter
+                if (selectedBrand.equals("Any")) {
+                    vehicleAdapter.updateDataSet();
                     return;
                 }
 
@@ -154,7 +163,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
 
-                // update adapter
+                vehicleAdapter.updateDataSet(results);
             }
 
             @Override
@@ -190,7 +199,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
 
-                // update adapter
+                vehicleAdapter.updateDataSet(results);
             }
         });
     }

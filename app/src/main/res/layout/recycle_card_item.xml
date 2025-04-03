@@ -22,7 +22,7 @@
             android:layout_marginBottom="10dp">
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/modelBrandText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Brand + Model"
@@ -33,7 +33,7 @@
                 />
 
             <ImageView
-                android:id="@+id/imageView4"
+                android:id="@+id/bookmarkBtn"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 app:srcCompat="@drawable/baseline_bookmark_add_24" />
@@ -41,7 +41,7 @@
         </LinearLayout>
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/vehicleImage"
             android:layout_width="match_parent"
             android:layout_height="250dp"
             android:scaleType="fitXY"
