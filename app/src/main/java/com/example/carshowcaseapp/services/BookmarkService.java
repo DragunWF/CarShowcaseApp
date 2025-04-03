@@ -20,6 +20,16 @@ public class BookmarkService {
         return results;
     }
 
+    public static boolean isBookmarked(int vehicleId) {
+        List<Bookmark> bookmarks = getAll();
+        for (Bookmark bookmark : bookmarks) {
+            if (bookmark.getVehicle().getId() == vehicleId) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public static void bookmark(Vehicle vehicle) {
         ModelBank<Bookmark> bank = DatabaseHelper.getBookmarkBank();
         bank.add(new Bookmark(SessionService.getCurrentAdminId(), vehicle));
