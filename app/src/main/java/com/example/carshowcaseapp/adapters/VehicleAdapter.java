@@ -1,6 +1,7 @@
 package com.example.carshowcaseapp.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.carshowcaseapp.R;
+import com.example.carshowcaseapp.ViewItem;
 import com.example.carshowcaseapp.data.Vehicle;
 import com.example.carshowcaseapp.helpers.DatabaseHelper;
 import com.example.carshowcaseapp.helpers.Utils;
@@ -84,6 +86,12 @@ public class VehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.ViewHold
 
         viewHolder.getModelBrandText().setText(String.format("%s %s", vehicle.getModel(), vehicle.getBrand()));
         viewHolder.getVehicleImage().setImageResource(imageResource);
+
+        viewHolder.getVehicleImage().setOnClickListener(v -> {
+            Intent intent = new Intent(context, ViewItem.class);
+            intent.putExtra(ViewItem.VEHICLE_ID, vehicle.getId());
+            context.startActivity(intent);
+        });
         viewHolder.getBookmarkBtn().setOnClickListener(v -> {
             if (BookmarkService.isBookmarked(vehicle.getId())) {
                 Utils.toast("Vehicle has already been bookmarked!", context);
