@@ -1,6 +1,5 @@
 package com.example.carshowcaseapp;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -9,7 +8,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,9 +21,6 @@ import com.example.carshowcaseapp.adapters.VehicleAdapter;
 import com.example.carshowcaseapp.data.Vehicle;
 import com.example.carshowcaseapp.helpers.DatabaseHelper;
 import com.example.carshowcaseapp.helpers.Utils;
-import com.example.carshowcaseapp.services.SessionService;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView vehicleRecycler;
     private VehicleAdapter vehicleAdapter;
     private RecyclerView.LayoutManager layoutManager;
+
+    private String selectedCategory, selectedBrand;
 
     @Override
     protected void onResume() {
@@ -122,11 +119,15 @@ public class MainActivity extends AppCompatActivity {
         categorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String selectedCategory = categoriesAdapter.getItem(position).toString();
+                selectedCategory = categoriesAdapter.getItem(position).toString();
                 List<Vehicle> vehicles = DatabaseHelper.getVehicleBank().getAll();
 
                 if (selectedCategory.equals("Any")) {
                     vehicleAdapter.updateDataSet();
+                    return;
+                }
+                if (!selectedBrand.equals("Any")) {
+                    spinnerFilter();
                     return;
                 }
 
@@ -148,11 +149,15 @@ public class MainActivity extends AppCompatActivity {
         brandsSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String selectedBrand = brandsAdapter.getItem(position).toString();
+                selectedBrand = brandsAdapter.getItem(position).toString();
                 List<Vehicle> vehicles = DatabaseHelper.getVehicleBank().getAll();
 
                 if (selectedBrand.equals("Any")) {
                     vehicleAdapter.updateDataSet();
+                    return;
+                }
+                if (!selectedCategory.equals("Any")) {
+                    spinnerFilter();
                     return;
                 }
 
@@ -202,5 +207,18 @@ public class MainActivity extends AppCompatActivity {
                 vehicleAdapter.updateDataSet(results);
             }
         });
+    }
+
+    public void spinnerFilter() {
+        List<Vehicle> vehicles = DatabaseHelper.getVehicleBank().getAll();
+
+        List<Vehicle> results = new ArrayList<>();
+        for (Vehicle vehicle : vehicles) {
+            if (vehicle.getBrand().equals(selectedBrand) && vehicle.getCategory().equals(selectedCategory)) {
+                results.add(vehicle);
+            }
+        }
+
+        vehicleAdapter.updateDataSet(results);
     }
 }
