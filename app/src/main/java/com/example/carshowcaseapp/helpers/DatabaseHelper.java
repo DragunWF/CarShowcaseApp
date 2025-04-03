@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.example.carshowcaseapp.data.Admin;
+import com.example.carshowcaseapp.services.AdminService;
 
 public class DatabaseHelper {
     private static final String FILE_KEY = "db";
@@ -21,5 +22,19 @@ public class DatabaseHelper {
 
     public static ModelBank<Admin> getAdminBank() {
         return adminBank;
+    }
+
+    public static void addVehiclesData() {
+
+    }
+
+    public static void addInitialAdmins() {
+        AdminService.register(new Admin("DragunWF", "password123"));
+        AdminService.register(new Admin("Lothern", "pass"));
+    }
+
+    public static void clear() {
+        editor.clear();
+        editor.apply();
     }
 }

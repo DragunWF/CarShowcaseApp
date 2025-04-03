@@ -5,7 +5,7 @@ import com.example.carshowcaseapp.helpers.DatabaseHelper;
 import com.example.carshowcaseapp.helpers.ModelBank;
 
 public class AdminService {
-    public void register(Admin admin) {
+    public static void register(Admin admin) {
         ModelBank<Admin> bank = DatabaseHelper.getAdminBank();
         bank.add(admin);
     }
