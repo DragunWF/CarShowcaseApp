@@ -31,7 +31,7 @@ public class BookmarksListView extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        vehicleAdapter.updateDataSet(getBookmarkedVehicles());
+        vehicleAdapter.updateDataSet(BookmarkService.getBookmarkedVehicles());
     }
 
     @Override
@@ -71,21 +71,10 @@ public class BookmarksListView extends AppCompatActivity {
     private void setRecycler() {
         bookmarkRecycler.setHasFixedSize(false);
 
-        vehicleAdapter = new VehicleAdapter(getBookmarkedVehicles(), this);
+        vehicleAdapter = new VehicleAdapter(BookmarkService.getBookmarkedVehicles(), this, true);
         bookmarkRecycler.setAdapter(vehicleAdapter);
 
         layoutManager = new LinearLayoutManager(this);
         bookmarkRecycler.setLayoutManager(layoutManager);
-    }
-
-    private List<Vehicle> getBookmarkedVehicles() {
-        List<Bookmark> bookmarks = BookmarkService.getAll();
-        List<Vehicle> vehicles = new ArrayList<>();
-
-        for (Bookmark bookmark : bookmarks) {
-            vehicles.add(bookmark.getVehicle());
-        }
-
-        return vehicles;
     }
 }

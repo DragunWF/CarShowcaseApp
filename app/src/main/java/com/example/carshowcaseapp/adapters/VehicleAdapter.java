@@ -23,6 +23,7 @@ public class VehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.ViewHold
 
     private List<Vehicle> localDataSet;
     private Context context;
+    private boolean isBookmark = false;
 
     /**
      * Provide a reference to the type of views that you are using
@@ -65,6 +66,12 @@ public class VehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.ViewHold
         this.context = context;
     }
 
+    public VehicleAdapter(List<Vehicle> dataSet, Context context, boolean isBookmark) {
+        localDataSet = dataSet;
+        this.context = context;
+        this.isBookmark = isBookmark;
+    }
+
     // Create new views (invoked by the layout manager)
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
@@ -96,6 +103,9 @@ public class VehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.ViewHold
             if (BookmarkService.isBookmarked(vehicle.getId())) {
                 BookmarkService.removeBookmark(vehicle.getId());
                 Utils.toast(vehicle.getModel() + " has been removed from your bookmark list", context);
+                if (isBookmark) {
+                    updateDataSet(BookmarkService.getBookmarkedVehicles());
+                }
             } else {
                 BookmarkService.bookmark(vehicle);
                 Utils.toast(vehicle.getModel() + " has been bookmarked!", context);

@@ -44,4 +44,15 @@ public class BookmarkService {
             }
         }
     }
+
+    public static List<Vehicle> getBookmarkedVehicles() {
+        List<Bookmark> bookmarks = BookmarkService.getAll();
+        List<Vehicle> vehicles = new ArrayList<>();
+
+        for (Bookmark bookmark : bookmarks) {
+            vehicles.add(bookmark.getVehicle());
+        }
+
+        return vehicles;
+    }
 }

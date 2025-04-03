@@ -19,6 +19,9 @@
             android:name=".ViewItem"
             android:exported="false" />
         <activity
+            android:name=".AddEditItem"
+            android:exported="false" />
+        <activity
             android:name=".BookmarksListView"
             android:exported="false" />
         <activity
