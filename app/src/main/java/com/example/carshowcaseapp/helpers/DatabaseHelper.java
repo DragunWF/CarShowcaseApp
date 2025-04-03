@@ -22,6 +22,8 @@ public class DatabaseHelper {
         sharedPref = context.getSharedPreferences(FILE_KEY, Context.MODE_PRIVATE);
         editor = sharedPref.edit();
         adminBank = new ModelBank<>(sharedPref, editor, "admins", Admin.class);
+        vehicleBank = new ModelBank<>(sharedPref, editor, "vehicles", Vehicle.class);
+        bookmarkBank = new ModelBank<>(sharedPref, editor, "bookmarks", Bookmark.class);
 
         if (adminBank.getAll().isEmpty()) {
             addInitialAdmins();
