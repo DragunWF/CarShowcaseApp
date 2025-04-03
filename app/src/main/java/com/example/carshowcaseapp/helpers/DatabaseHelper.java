@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.example.carshowcaseapp.data.Admin;
+import com.example.carshowcaseapp.data.Bookmark;
+import com.example.carshowcaseapp.data.Vehicle;
 import com.example.carshowcaseapp.services.AdminService;
 
 public class DatabaseHelper {
@@ -13,6 +15,8 @@ public class DatabaseHelper {
     private static SharedPreferences.Editor editor;
 
     private static ModelBank<Admin> adminBank;
+    private static ModelBank<Vehicle> vehicleBank;
+    private static ModelBank<Bookmark> bookmarkBank;
 
     public void initialize(Context context) {
         sharedPref = context.getSharedPreferences(FILE_KEY, Context.MODE_PRIVATE);
@@ -22,6 +26,14 @@ public class DatabaseHelper {
 
     public static ModelBank<Admin> getAdminBank() {
         return adminBank;
+    }
+
+    public static ModelBank<Vehicle> getVehicleBank() {
+        return vehicleBank;
+    }
+
+    public static ModelBank<Bookmark> getBookmarkBank() {
+        return bookmarkBank;
     }
 
     public static void addVehiclesData() {
