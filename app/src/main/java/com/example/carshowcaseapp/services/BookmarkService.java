@@ -35,8 +35,13 @@ public class BookmarkService {
         bank.add(new Bookmark(SessionService.getCurrentAdminId(), vehicle));
     }
 
-    public static void delete(int id) {
+    public static void removeBookmark(int vehicleId) {
         ModelBank<Bookmark> bank = DatabaseHelper.getBookmarkBank();
-        bank.delete(id);
+        for (Bookmark bookmark : getAll()) {
+            if (bookmark.getVehicle().getId() == vehicleId) {
+                bank.delete(bookmark.getId());
+                break;
+            }
+        }
     }
 }

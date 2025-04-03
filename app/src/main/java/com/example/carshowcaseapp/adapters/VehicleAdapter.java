@@ -94,7 +94,8 @@ public class VehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.ViewHold
         });
         viewHolder.getBookmarkBtn().setOnClickListener(v -> {
             if (BookmarkService.isBookmarked(vehicle.getId())) {
-                Utils.toast("Vehicle has already been bookmarked!", context);
+                BookmarkService.removeBookmark(vehicle.getId());
+                Utils.toast(vehicle.getModel() + " has been removed from your bookmark list", context);
             } else {
                 BookmarkService.bookmark(vehicle);
                 Utils.toast(vehicle.getModel() + " has been bookmarked!", context);
