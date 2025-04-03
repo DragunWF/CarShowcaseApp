@@ -14,4 +14,10 @@
         <item>SUV</item>
         <item>SUV 2</item>
     </string-array>
+    <string-array name="brands_array">
+        <item>BMW</item>
+        <item>Toyota</item>
+        <item>Ferrari</item>
+        <item>Lincoln</item>
+    </string-array>
 </resources>
