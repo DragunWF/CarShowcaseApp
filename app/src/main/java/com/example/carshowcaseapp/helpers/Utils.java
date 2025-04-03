@@ -49,4 +49,12 @@ public class Utils {
                 return R.drawable.ic_launcher_background;
         }
     }
+
+    public static String toImageName(String name) {
+        if (name.isEmpty()) {
+            return "";
+        }
+        String lower = name.toLowerCase();
+        return String.join("", lower.split(" "));
+    }
 }
