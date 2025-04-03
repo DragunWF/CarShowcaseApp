@@ -23,4 +23,8 @@ public class Utils {
     public static String getText(EditText text) {
         return String.valueOf(text.getText());
     }
+
+    public static double round(double number) {
+        return Math.round(number * 100) / 100.0;
+    }
 }
