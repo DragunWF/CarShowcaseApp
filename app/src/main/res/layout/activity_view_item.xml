@@ -139,6 +139,7 @@
             android:layout_marginBottom="20dp"
             />
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/bookmarkBtn"
             android:layout_width="match_parent"
             android:layout_height="52dp"
             android:text="Add to bookmark"
